@@ -1,7 +1,3 @@
-window.queue = new NonAsyncQueue();
-document.addEventListener('DOMContentLoaded', window.queue.ready());
-
-
 class NonAsyncQueue {
   constructor() {
     this.callbacks = [];
@@ -13,7 +9,7 @@ class NonAsyncQueue {
     this.callbacks.push({"cb": callback, "key": key});
   }
   ready(callback) { // callbacks to run at document ready
-    this.callbacks.push({"cb": callback, "key": "ready"});
+    this.play("ready")
   }
   interrupt(callback, key){ // new callback to be ran NEXT instead of added at end of queue
     this.stop();
@@ -159,3 +155,6 @@ class ele {
   }
 
 }
+
+window.queue = new NonAsyncQueue();
+document.addEventListener('DOMContentLoaded', window.queue.ready());
