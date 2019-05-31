@@ -1,3 +1,75 @@
+/* https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862 */
+/* https://stackoverflow.com/questions/1248081/get-the-browser-viewport-dimensions-with-javascript */
+/* 600px, 900px, 1200px, 1800px */
+
+class Breakpoints {
+  constructor() {
+    this.width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    this.height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    if (this.width < 600) {
+      this.state = "xs"; // phone/mobile
+    }
+    else if (this.width < 900) {
+      this.state = "sm"; // tablet portrait
+    }
+    else if (this.width < 1200) {
+      this.state = "md"; // tablet landscape
+    }
+    else if (this.width < 1800) {
+      this.state = "lg"; // desktop
+    }
+    else {
+      this.state = "xl"; // desktop big
+    }
+  }
+}
+
+class DOMTable {
+
+  constructor(data, settings) {
+    this.ref = "";
+    this.data = {};
+    this.settings = {
+      "pagination": 50,
+      "columns": []
+    };
+  }
+
+  data(data) {
+    this.data = data;
+    return this;
+  }
+
+  settings(settings) {
+    this.settings =  settings;
+    return this;
+  }
+
+  insert(element) {
+    alert(this.name);
+  }
+
+  build() {
+    var e = this.createElement;
+    this.settings["columns"].foreach(build_thead);
+    var columns = this.settings["columns"];
+    for (var key in columns) {
+      columns[key]
+    }
+  }
+
+
+  thead(item, index) {
+    var e = this.createElement;
+    e("thead")
+    e("th")
+  }
+
+  tbody() {
+
+  }
+}
+
 class NonAsyncQueue {
   constructor() {
     this.callbacks = [];
@@ -155,6 +227,8 @@ class ele {
   }
 
 }
+
+
 
 window.queue = new NonAsyncQueue();
 document.addEventListener('DOMContentLoaded', window.queue.ready());
